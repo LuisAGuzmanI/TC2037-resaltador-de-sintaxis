@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+}
+
+#myApp .child {
+    display: inline-block; /** set the divs side-by-side **/
+    vertical-align: top;
+    width: 50%;
+    height: 100%;
+    padding: 15px;
+    font-size: 20px; /** override font-size: 0 of #container, so that text will be visible again **/
+    text-align: left; /** set text in the .child divs back to normal alignment **/
+    box-sizing: border-box;
+}
+
+#rawText {
+    background-color: rgb(31, 31, 31);
+    width: 100%; 
+    height: 300px;
+    color: rgb(233, 232, 232);
+    font-size: inherit;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+ }
+
+ .boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#textContainer {
+    background-color: rgb(31, 31, 31);
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.variable {
+    color: rgb(233, 232, 232);
+}
+
+.operador {
+    color: rgb(209, 49, 75);
+}
+
+.numeros {
+    color: rgb(156, 117, 210);
+}
+
+.parentesis {
+    color: rgb(204, 204, 204);
+}
+
+.comentario {
+    color: rgb(109, 96, 58);
+}
