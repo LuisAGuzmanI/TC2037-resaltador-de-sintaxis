@@ -182,6 +182,7 @@ export default {
 .error {
     color: rgb(209, 20, 20);
     text-decoration: underline;
+    text-decoration-style: wavy;
 }
 
 .tokensTable {
