@@ -1,7 +1,7 @@
 const digitos = ['1','2','3','4','5','6','7','8','9','0']
 
 // Lista con caracteres de la 'a' a la 'z', 'A' a la 'Z' y '_'  
-const caracteres = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','ñ','z','x','c','b','n','m','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Ñ','Z','X','C','V','B','N','M','_']
+const caracteres = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','ñ','z','x','c','v','b','n','m','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Ñ','Z','X','C','V','B','N','M','_']
 
 // [{tipo, token}, aumento]
 const automata = (str, index) => {
@@ -17,7 +17,7 @@ const automata = (str, index) => {
         case '+':
             return [{token, tipo:'suma'}, 1];
         case '*':
-            return [{token, tipo:'multiplicación'}, 1];
+            return [{token, tipo:'multiplicacion'}, 1];
         case '(':
             return [{token, tipo:'parentesis_que_abre'}, 1];
         case ')':
@@ -25,8 +25,8 @@ const automata = (str, index) => {
         default:
             if (token === '-' && !digitos.includes(str[index + 1])) {
                 return [{token, tipo:'resta'}, 1];
-            } else if (token === '/' && str[index + 1] === ' ') {
-                return [{token, tipo:'división'}, 1];
+            } else if (token === '/' && (str[index + 1] === ' ' || digitos.includes(str[index + 1])) || str[index + 1]=== '-' || str[index + 1]=== '(' ) {
+                return [{token, tipo:'division'}, 1];
             } else if (token === '/' && str[index + 1 ] === '/') {
                 return [{token:(str.slice(index, str.length)), tipo:'comentario'}, str.length - index ]  ;
             }
@@ -98,7 +98,7 @@ const getTokens = (rawText) => {
             }
             i += aumento;
         }
-        finalTokens.push({token:'-n', tipo: 'salto_de_linea'})
+        finalTokens.push({token:'/n', tipo: 'salto_de_linea'})
     }
 
     return finalTokens;

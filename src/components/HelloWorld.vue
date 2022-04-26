@@ -65,13 +65,16 @@
 <script>
 import getTokens from '../assets/js/getTokens';
 import getSintax from '../assets/js/getSintax';
+const initialRawText = `b=7
+Alfa_1=32.4*6.1E-8*(4/5)
+d=a^b// Esto es un comentario`
 export default {
   name: 'HelloWorld',
   data() {
         return {
-            tokens: {},
-            rawText: '',
-            sintax: {error: false, linea: 0, pos: 0}
+            rawText: initialRawText,
+            sintax: {error: 'XXXX', linea: 'XXXX', pos: 'XXXX'},
+            tokens: getTokens(initialRawText),
         }
     },
     methods: {
@@ -93,7 +96,7 @@ export default {
             return ((tipo === 'entero') || (tipo === 'real'));
         },
         isOperador (tipo) {
-            return ((tipo === 'asignacion') || (tipo === 'potencia') || (tipo === 'multiplicación') || (tipo === 'división') || (tipo === 'suma') || (tipo === 'resta'))
+            return ((tipo === 'asignacion') || (tipo === 'potencia') || (tipo === 'multiplicacion') || (tipo === 'division') || (tipo === 'suma') || (tipo === 'resta'))
         },
         isComentario (tipo) {
             return (tipo === 'comentario');
