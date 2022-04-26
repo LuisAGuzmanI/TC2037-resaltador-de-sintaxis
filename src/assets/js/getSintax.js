@@ -84,9 +84,7 @@ function getSintax(jsonFile) {
             else if (jsonFile[pos].tipo == "comentario" || jsonFile[pos].tipo == "salto_de_linea") {
                 return true;
             }
-            else {
-                return false;
-            }
+            return true;
 
         }
         else if (parentesisAbre()) {
@@ -190,12 +188,12 @@ function getSintax(jsonFile) {
 
 
 
-    console.log("________TOKENS________");
-    console.log("se analizaron " + jsonFile.length + " tokens");
-    for (let i = 0; i < jsonFile.length; i++) {
-        console.log(jsonFile[i].token + " :  " + jsonFile[i].tipo);
-    }
-    console.log("|______________________|");
+    // console.log("________TOKENS________");
+    // console.log("se analizaron " + jsonFile.length + " tokens");
+    // for (let i = 0; i < jsonFile.length; i++) {
+    //     console.log(jsonFile[i].token + " :  " + jsonFile[i].tipo);
+    // }
+    // console.log("|______________________|");
 
 
     let linea = 1; // contador que nos dira en que linea se encontro el error 

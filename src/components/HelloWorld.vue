@@ -18,7 +18,7 @@
                         <span v-if="tipo === 'salto_de_linea'">
                             <br>
                         </span>
-                        <span v-else :class="{variable: isVariable(tipo), numeros: isNumeros(tipo), operador: isOperador(tipo), comentario: isComentario(tipo), parentesis: isParentesis(tipo)}"> {{token}} </span>
+                        <span v-else :class="{error:isError(index), variable: isVariable(tipo), numeros: isNumeros(tipo), operador: isOperador(tipo), comentario: isComentario(tipo), parentesis: isParentesis(tipo)}"> {{token}} </span>
                       </span>
                     </template>
                 </div>
@@ -32,10 +32,15 @@
                         <th>Posición</th>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr v-if="sintax.error">
                             <td>{{sintax.error}}</td>
                             <td>{{sintax.linea}}</td>
                             <td>{{sintax.pos}}</td>
+                        </tr>
+                        <tr v-else>
+                            <td>{{sintax.error}}</td>
+                            <td>{{null}}</td>
+                            <td>{{null}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -81,13 +86,10 @@ export default {
         submitForm ( e ) {
             e.preventDefault();
 
-            // console.log(e);
-            console.log(this.rawText);
+            let localTokens = getTokens(this.rawText) 
+            this.sintax = getSintax(localTokens); 
 
-            this.tokens = getTokens(this.rawText);
-            console.log(this.tokens);
-            this.sintax = getSintax(this.tokens); 
-            console.log(this.sintax);
+            this.tokens = localTokens;
         },
         isVariable (tipo) {
             return (tipo === 'variable');
@@ -103,6 +105,13 @@ export default {
         },
         isParentesis (tipo) {
             return ((tipo === 'parentesis_que_abre') || (tipo === 'parentesis_que_cierra'));
+        },
+        isError(i) {
+            console.log(i+1, this.sintax)
+            if (this.sintax.error && i+1 === this.sintax.pos) {
+                // console.log(i, this.tokens[i].token)
+                return (true)
+            }
         },
     }
 }
@@ -168,6 +177,11 @@ export default {
 
 .comentario {
     color: rgb(109, 96, 58);
+}
+
+.error {
+    color: rgb(209, 20, 20);
+    text-decoration: underline;
 }
 
 .tokensTable {
