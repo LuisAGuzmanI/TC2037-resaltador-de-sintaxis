@@ -10,12 +10,7 @@ function getSintax(jsonFile) {
     O : + | - | ^ | * | / 
     */
 
-    // guardamos en un arreglo de json
-    //let jsonFile = JSON.parse('[{ "token": "b", "tipo": "variable" }, { "token": "=", "tipo": "asignacion" }, { "token": "(", "tipo": "parentesis_que_abre" }, { "token": "7", "tipo": "entero" }, { "token": ")", "tipo": "parentesis_que_cierra" }, { "token": "", "tipo": "salto_de_linea" }, { "token": "X", "tipo": "variable" }, { "token": "=", "tipo": "asignacion" }, { "token": "3", "tipo": "entero" }, { "token": "+", "tipo": "suma" }, { "token": "(", "tipo": "parentesis_que_abre" }, { "token": "4", "tipo": "entero" }, { "token": "*", "tipo": "multiplicacion" }, { "token": "5.4", "tipo": "real" }, { "token": ")", "tipo": "parentesis_que_cierra" },  { "token": "", "tipo": "salto_de_linea" }]');
-    //console.log(a[0].tipo);
-
-
-    function S() {
+    function S() {  
         // primero revisamos que la linea inicie con una variable,
         // un comentario o que sea simpemente un satlo de linea
         if (jsonFile[pos].tipo == 'variable') {
@@ -206,20 +201,6 @@ function getSintax(jsonFile) {
         pos++;
         
     }
-
-
-
-
-    // if (flag) {
-    //     console.log("el documento esta bien escrito ");
-    // }
-    // else {
-    //     console.log("se encontro un error en el token " + (pos-1) + " en la linea " + linea);
-    // }
-
-
-    // console.log('la posicion final fue: ' + (pos-1));
-
 
     return {
         "error" : !flag,
