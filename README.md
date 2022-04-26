@@ -1,14 +1,24 @@
-# Webpack Starter
+# tc2037-resaltador-de-sintaxis
 
-Este es el proyecto inicial para crear aplicaciones utilizando webpack.
-
-### Notas:
-Recuerden reconstruir los módulos con Node
+## Project setup
 ```
 npm install
 ```
 
-Y para construir el bould, recuerden:
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
 ```
 npm run build
 ```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

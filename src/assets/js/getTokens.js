@@ -86,7 +86,7 @@ const automata = (str, index) => {
 }
 
 
-const rawTextToTokens = (rawText) => {
+const getTokens = (rawText) => {
     const finalTokens = []
     
     for (const line of rawText.split('\n')) {
@@ -104,41 +104,4 @@ const rawTextToTokens = (rawText) => {
     return finalTokens;
 }
 
-const app = Vue.createApp({
-
-    data() {
-        return {
-            tokens: {},
-            rawText: '',
-        }
-    },
-    methods: {
-        submitForm ( e ) {
-            e.preventDefault();
-
-            // console.log(e);
-            console.log(this.rawText);
-
-            this.tokens = rawTextToTokens(this.rawText);
-            console.log(this.tokens);
-        },
-        isVariable (tipo) {
-            return (tipo === 'variable');
-        },
-        isNumeros (tipo) {
-            return ((tipo === 'entero') || (tipo === 'real'));
-        },
-        isOperador (tipo) {
-            return ((tipo === 'asignacion') || (tipo === 'potencia') || (tipo === 'multiplicación') || (tipo === 'división') || (tipo === 'resta'))
-        },
-        isComentario (tipo) {
-            return (tipo === 'comentario');
-        },
-        isParentesis (tipo) {
-            return ((tipo === 'parentesis_que_abre') || (tipo === 'parentesis_que_cierra'));
-        },
-    }
-    
-})
-
-app.mount('#myApp')
+export default getTokens;
