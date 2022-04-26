@@ -26,7 +26,7 @@
         </div>
         <div class="child">
             <h1>Tokens</h1>
-            <table>
+            <table id="tokensTable">
                 <thead>
                     <th>Indice</th>
                     <th>Token</th>
@@ -72,7 +72,7 @@ export default {
             return ((tipo === 'entero') || (tipo === 'real'));
         },
         isOperador (tipo) {
-            return ((tipo === 'asignacion') || (tipo === 'potencia') || (tipo === 'multiplicación') || (tipo === 'división') || (tipo === 'resta'))
+            return ((tipo === 'asignacion') || (tipo === 'potencia') || (tipo === 'multiplicación') || (tipo === 'división') || (tipo === 'suma') || (tipo === 'resta'))
         },
         isComentario (tipo) {
             return (tipo === 'comentario');
@@ -131,11 +131,11 @@ export default {
 }
 
 .operador {
-    color: rgb(209, 49, 75);
+    color: #42b883;
 }
 
 .numeros {
-    color: rgb(156, 117, 210);
+    color: #338fec;
 }
 
 .parentesis {
@@ -144,5 +144,28 @@ export default {
 
 .comentario {
     color: rgb(109, 96, 58);
+}
+
+#tokensTable {
+  font-family: inherit;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tokensTable td, #tokensTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tokensTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#tokensTable tr:hover {background-color: #ddd;}
+
+#tokensTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #42b883;
+  color: white;
 }
 </style>
