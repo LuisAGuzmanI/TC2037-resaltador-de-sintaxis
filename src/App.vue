@@ -7,6 +7,7 @@
           <p>Antonio López Chávez - A01741741</p>
           <p>Leonardo Mojica Amezquita - A00571960</p>
     </header>
+    <hr>
     <HelloWorld />
   </div>
 </template>

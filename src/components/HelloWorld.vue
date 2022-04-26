@@ -23,10 +23,27 @@
                     </template>
                 </div>
             </div>
+            <hr>
+            <div>
+                <table class="tokensTable">
+                    <thead>
+                        <th>Error</th>
+                        <th>Linea</th>
+                        <th>Posición</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{sintax.error}}</td>
+                            <td>{{sintax.linea}}</td>
+                            <td>{{sintax.pos}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="child">
             <h1>Tokens</h1>
-            <table id="tokensTable">
+            <table class="tokensTable">
                 <thead>
                     <th>Indice</th>
                     <th>Token</th>
@@ -47,12 +64,14 @@
 
 <script>
 import getTokens from '../assets/js/getTokens';
+import getSintax from '../assets/js/getSintax';
 export default {
   name: 'HelloWorld',
   data() {
         return {
             tokens: {},
             rawText: '',
+            sintax: {error: false, linea: 0, pos: 0}
         }
     },
     methods: {
@@ -64,6 +83,8 @@ export default {
 
             this.tokens = getTokens(this.rawText);
             console.log(this.tokens);
+            this.sintax = getSintax(this.tokens); 
+            console.log(this.sintax);
         },
         isVariable (tipo) {
             return (tipo === 'variable');
@@ -105,7 +126,7 @@ export default {
 #rawText {
     background-color: rgb(31, 31, 31);
     width: 100%; 
-    height: 300px;
+    height: 195px;
     color: rgb(233, 232, 232);
     font-size: inherit;
     border-radius: 5px;
@@ -146,22 +167,22 @@ export default {
     color: rgb(109, 96, 58);
 }
 
-#tokensTable {
+.tokensTable {
   font-family: inherit;
   border-collapse: collapse;
   width: 100%;
 }
 
-#tokensTable td, #tokensTable th {
+.tokensTable td, .tokensTable th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#tokensTable tr:nth-child(even){background-color: #f2f2f2;}
+.tokensTable tr:nth-child(even){background-color: #f2f2f2;}
 
-#tokensTable tr:hover {background-color: #ddd;}
+.tokensTable tr:hover {background-color: #ddd;}
 
-#tokensTable th {
+.tokensTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
