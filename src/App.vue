@@ -8,17 +8,17 @@
           <p>Leonardo Mojica Amezquita - A00571960</p>
     </header>
     <hr>
-    <HelloWorld />
+    <AnalizadorSintactico />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AnalizadorSintactico from './components/AnalizadorSintactico.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AnalizadorSintactico
   }
 }
 </script>

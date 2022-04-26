@@ -33,7 +33,7 @@
                     </thead>
                     <tbody>
                         <tr v-if="sintax.error">
-                            <td>{{sintax.error}}</td>
+                            <td data-testid="sintaxErrorIndicator">{{sintax.error}}</td>
                             <td>{{sintax.linea}}</td>
                             <td>{{sintax.pos}}</td>
                         </tr>
@@ -74,7 +74,7 @@ const initialRawText = `b=7
 Alfa_1=32.4*6.1E-8*(4/5)
 d=a^b// Esto es un comentario`
 export default {
-  name: 'HelloWorld',
+  name: 'AnalizadorSintactico',
   data() {
         return {
             rawText: initialRawText,
@@ -107,7 +107,7 @@ export default {
             return ((tipo === 'parentesis_que_abre') || (tipo === 'parentesis_que_cierra'));
         },
         isError(i) {
-            console.log(i+1, this.sintax)
+            // console.log(i+1, this.sintax)
             if (this.sintax.error && i+1 === this.sintax.pos) {
                 // console.log(i, this.tokens[i].token)
                 return (true)
