@@ -25,12 +25,11 @@ const automata = (str, index) => {
         default:
             if (token === '-' && !digitos.includes(str[index + 1])) {
                 return [{token, tipo:'resta'}, 1];
-            } else if (token === '/' && (str[index + 1] === ' ' || digitos.includes(str[index + 1]) || (str[index + 1]=== '-' && digitos.includes(str[index + 2])) || str[index + 1]=== '(' )) {
+            } else if (token === '/' && str[index + 1] !== '/') {
                 return [{token, tipo:'division'}, 1];
             } else if (token === '/' && str[index + 1 ] === '/') {
                 return [{token:(str.slice(index, str.length)), tipo:'comentario'}, str.length - index ]  ;
             }
-
             break;
     }
 

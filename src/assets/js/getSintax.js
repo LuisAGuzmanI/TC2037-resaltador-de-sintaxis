@@ -10,7 +10,7 @@ function getSintax(jsonFile) {
     O : + | - | ^ | * | / 
     */
 
-    function S() {  
+    function S() {
         // primero revisamos que la linea inicie con una variable,
         // un comentario o que sea simpemente un satlo de linea
         if (jsonFile[pos].tipo == 'variable') {
@@ -66,8 +66,7 @@ function getSintax(jsonFile) {
     }
 
     function A() {
-
-        if (X(pos)) { // la X() hace pos++ en true
+        if (X(pos) || (jsonFile[pos].token == '-')) { // la X() hace pos++ en true
             if (O()) { // la O() hace pos++ solo si es true
                 if (A()) {
                     return true;
